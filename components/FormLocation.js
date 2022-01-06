@@ -1,9 +1,10 @@
-import { Button } from "@chakra-ui/button";
 import { Checkbox } from "@chakra-ui/checkbox";
 import { Flex, Link } from "@chakra-ui/layout";
 import { Select } from "@chakra-ui/select";
 import ArrowIcon from "@icons/ArrowIcon";
 import { nanoid } from "nanoid";
+import NextLink from "next/link"
+
 
 function FormLocation() {
     return (
@@ -12,7 +13,9 @@ function FormLocation() {
             gridGap="16px"
             w="full"
             justifyContent="center"
+            alignItems="center"
             fontSize="14px"
+            direction={['column', 'column', 'column', 'row', 'row']}
         >
             <Select
                 size='lg'
@@ -23,7 +26,7 @@ function FormLocation() {
                 maxW="254px"
                 textTransform="uppercase"
             >
-                <option key={nanoid()} value={"nic"} selected >Nicaragua</option>
+                <option key={nanoid()} value={"nic"} selected >canada</option>
             </Select>
             <Select
                 borderRadius="none"
@@ -34,7 +37,7 @@ function FormLocation() {
                 maxW="254px"
                 textTransform="uppercase"
             >
-                <option key={nanoid()} value={"nic"} selected >Español</option>
+                <option key={nanoid()} value={"nic"} selected >english</option>
             </Select>
             <Flex
                 fontSize="12px"
@@ -44,30 +47,35 @@ function FormLocation() {
                 w="full"
                 justifyContent="space-between"
                 px="14px"
+                h="3rem"
                 cursor="default"
                 textTransform="uppercase"
             >
-                recordar mi selección
+                remember my selection
                 <Checkbox
                     size="lg"
                 />
             </Flex>
-            <Link
-                href="/#"
-                borderRadius="none"
-                size="lg"
-                bgColor="black"
-                px="50px"
-                color="white"
-                _hover={{
-                    bgColor:"green.200"
-                }}
-                _focus={{
-                    bgColor:"green.200"
-                }}
+            <NextLink
+                href="/en"
+                passHref
             >
-                <ArrowIcon />
-            </Link>
+                <Link
+                    borderRadius="none"
+                    size="lg"
+                    bgColor="black"
+                    px="50px"
+                    color="white"
+                    _hover={{
+                        bgColor: "green.200"
+                    }}
+                    _focus={{
+                        bgColor: "green.200"
+                    }}
+                >
+                    <ArrowIcon />
+                </Link>
+            </NextLink>
         </Flex>
     );
 }

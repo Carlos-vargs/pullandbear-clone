@@ -4,32 +4,35 @@ import bgImage from '@images/pullandbear-background.webp';
 
 export default function Home() {
 	return (
-        <Flex
-			position="relative"
-			bgImg={`url(${bgImage.src})`}
+		<Flex
 			w="100vw"
 			minH="100vh"
-			bgPosition="top"
 			bgSize="cover"
-			justifyContent="flex-start"
-			alignItems="center"
+			bgPosition="top"
 			gridRowGap="70px"
 			direction="column"
-			pt="104px"
-
+			alignItems="center"
+			position="relative"
+			justifyContent="flex-start"
+			bgImg={`url(${bgImage.src})`}
+			pt={['40px', '40px', '40px', '40px', '104px']}
+			pb={['40px', '40px', '40px', '40px', '0px']}
 		>
 			<Heading
-				textTransform="uppercase"
-				color={'white'}
-				fontSize="160px"
-				letterSpacing="-4px"
-				fontWeight="bold"
+				color="white"
+				lineHeight="1"
 				cursor="default"
+				fontWeight="bold"
+				textAlign="center"
+				letterSpacing="-4px"
+				textTransform="uppercase"
+				px={['74px', '74px', '74px', '0px', '0px']}
+				fontSize={['60px', '60px', '60px', '140px', '160px']}
 			>
-				pull&bear
+				pull & bear
 			</Heading>
 			<FormLocation />
 
 		</Flex>
-    );
+	);
 }

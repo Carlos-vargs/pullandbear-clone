@@ -9,7 +9,7 @@ class MyDocument extends Document {
 
     render() {
         return (
-            <Html lang="es">
+            <Html lang="en">
                 <Head>
                     <meta name="description" content="pull and bear page clone" />
                 </Head>
