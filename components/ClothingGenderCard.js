@@ -18,7 +18,8 @@ function ClothingGenderCard({ data }) {
                 href={url}
                 passHref
             >
-                <Link
+                <Link   
+                    userSelect="none"
                     textDecoration="none !important"
                     fontWeight="400"
                     letterSpacing="6px"

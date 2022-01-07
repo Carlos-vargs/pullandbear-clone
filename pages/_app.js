@@ -1,5 +1,6 @@
 import { ChakraProvider } from '@chakra-ui/react'
 import Head from 'next/head'
+import 'animate.css';
 
 function MyApp({ Component, pageProps }) {
 	return (
