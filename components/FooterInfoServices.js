@@ -11,7 +11,7 @@ function FooterInfoServices({ data }) {
             {
                 images
                     ? <Flex gridGap="20px" >
-                        {array.map(e => <Image src={e.src} key={nanoid()} objectFit="contain" maxW="116px" h="36px" />)}
+                        {array.map(e => <Image alt="download our app" src={e.src} key={nanoid()} objectFit="contain" maxW="116px" h="36px" />)}
                     </Flex>
                     : array.map(e => <Text key={nanoid()} color="#666666">{e}</Text>)
             }
