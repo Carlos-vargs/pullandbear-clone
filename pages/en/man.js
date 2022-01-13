@@ -1,10 +1,13 @@
-import { Flex } from '@chakra-ui/layout';
+import Layout from '@components/Layout';
+import ShopInCard from '@components/ShopInCard';
+import man from "@images/pullandbear-manbg.webp";
+
 
 function Man() {
     return (
-        <Flex>
-             man
-        </Flex>
+        <Layout>
+            <ShopInCard image={man.src} bgPosition={['left top', 'left top', 'top', 'top', 'top']} />
+        </Layout>
     );
 }
 

@@ -15,14 +15,13 @@ export default function Home() {
 			position="relative"
 			justifyContent="flex-start"
 			bgImg={`url(${bgImage.src})`}
-			pt={['40px', '40px', '40px', '40px', '104px']}
-			pb={['40px', '40px', '40px', '40px', '0px']}
+			pt={['150px', '150px', '150px', '150px', '180px']}
 		>
 			<Heading
 				color="white"
 				lineHeight="1"
 				cursor="default"
-				fontWeight="bold"
+				fontWeight="semibold"
 				textAlign="center"
 				letterSpacing="-4px"
 				textTransform="uppercase"

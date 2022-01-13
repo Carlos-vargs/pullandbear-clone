@@ -1,81 +1,77 @@
+import NextChakraLink from "@components/NextChakraLink";
 import { Checkbox } from "@chakra-ui/checkbox";
-import { Flex, Link } from "@chakra-ui/layout";
 import { Select } from "@chakra-ui/select";
+import { Flex } from "@chakra-ui/layout";
 import ArrowIcon from "@icons/ArrowIcon";
 import { nanoid } from "nanoid";
-import NextLink from "next/link"
-
 
 function FormLocation() {
     return (
         <Flex
+            w="full"
             as="from"
             gridGap="16px"
-            w="full"
-            justifyContent="center"
+            fontSize="12px"
             alignItems="center"
-            fontSize="14px"
+            justifyContent="center"
             direction={['column', 'column', 'column', 'row', 'row']}
         >
             <Select
                 size='lg'
-                bgColor="white"
-                borderRadius="none"
-                color="gray.700"
-                fontSize="12px"
                 maxW="254px"
+                fontSize="12px"
+                bgColor="white"
+                color="gray.700"
+                borderRadius="none"
+                defaultValue={"ca"}
                 textTransform="uppercase"
             >
-                <option key={nanoid()} value={"nic"} selected >canada</option>
+                <option key={nanoid()} value={"ca"}>canada</option>
             </Select>
             <Select
-                borderRadius="none"
                 size='lg'
-                bgColor="white"
-                color="gray.700"
-                fontSize="12px"
                 maxW="254px"
+                bgColor="white"
+                fontSize="12px"
+                color="gray.700"
+                borderRadius="none"
+                defaultValue={"en"}
                 textTransform="uppercase"
             >
-                <option key={nanoid()} value={"nic"} selected >english</option>
+                <option key={nanoid()} value={"en"}>english</option>
             </Select>
             <Flex
-                fontSize="12px"
-                bgColor="white"
-                alignItems="center"
-                maxW="254px"
-                w="full"
-                justifyContent="space-between"
-                px="14px"
                 h="3rem"
+                w="full"
+                px="14px"
+                maxW="254px"
+                bgColor="white"
                 cursor="default"
+                alignItems="center"
                 textTransform="uppercase"
+                justifyContent="space-between"
             >
                 remember my selection
                 <Checkbox
                     size="lg"
                 />
             </Flex>
-            <NextLink
-                href="/en"
-                passHref
+            <NextChakraLink
+                pageUrl={"/en"}
+                size="lg"
+                px="50px"
+                bgColor="black"
+                color="white"
+                borderRadius="none"
+                _hover={{
+                    bgColor: "green.200"
+                }}
+                _focus={{
+                    bgColor: "green.200"
+                }}
             >
-                <Link
-                    borderRadius="none"
-                    size="lg"
-                    bgColor="black"
-                    px="50px"
-                    color="white"
-                    _hover={{
-                        bgColor: "green.200"
-                    }}
-                    _focus={{
-                        bgColor: "green.200"
-                    }}
-                >
-                    <ArrowIcon />
-                </Link>
-            </NextLink>
+                <ArrowIcon />
+            </NextChakraLink>
         </Flex>
     );
 }

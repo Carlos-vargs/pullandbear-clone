@@ -1,10 +1,10 @@
-import { Box, Flex, Grid, Link, Text } from "@chakra-ui/layout";
-import LogoBlackIcon from "@icons/LogoBlackIcon";
-import NextLink from "next/link"
-import XIcon from "@icons/XIcon";
+import { Box, Flex, Grid, Text } from "@chakra-ui/layout";
+import LogoCenter from '@components/LogoCenter';
 import { nanoid } from "nanoid";
+import NextChakraLink from "@components/NextChakraLink";
+import { CloseButton, Drawer, DrawerBody, DrawerContent, DrawerOverlay } from "@chakra-ui/react";
 
-function MenuContent({ handleClick, left }) {
+function MenuContent({ onClose, isOpen }) {
 
     const menuSections = [
         {
@@ -56,66 +56,41 @@ function MenuContent({ handleClick, left }) {
     ]
 
     return (
-        <Box
-            transition="all .2s ease"
-            bgColor="rgba(0,0,0,0.6)"
-            position="absolute"
-            zIndex="2"
-            w="100vw"
-            h="100vh"
-        >
-            <Flex
-                h="100vh"
-                zIndex="3"
-                pt="140px"
-                color="black"
-                gridGap="20px"
-                bgColor="white"
-                direction="column"
-                position="absolute"
-                left={`${left}vw`}
-                alignItems="center"
-                transition="all .4s ease"
-                textTransform="uppercase"
-                w={['100vw', '100vw', '100vw', '60vw', '60vw']}
-                className="animate__animated animate__fadeInLeftBig"
-            >
-                <Box
-                    top="30px"
-                    left="30px"
-                    color="black"
-                    cursor="pointer"
-                    title="close menu"
-                    position="absolute"
-                    onClick={handleClick}
-                    w={['30px', '40px', '40px', '40px', '40px']}
-                    h={['30px', '40px', '40px', '40px', '40px']}
+        <Drawer placement="left" onClose={onClose} isOpen={isOpen} size="xl"  >
+            <DrawerOverlay />
+            <DrawerContent>
+                <DrawerBody
+                    w="full"
+                    pt="120px"
+                    display="flex"
+                    gridGap="20px"
+                    flexDirection="column"
+                    textTransform="uppercase"
                 >
-                    <XIcon />
-                </Box>
-                <Flex
-                    h="50px"
-                    left="50%"
-                    top="20px"
-                    position="absolute"
-                    transform="translate(-50%)"
-                    top={['9px', '32px', '32px', '32px', '32px']}
-                    w={['134px', '250px', '250px', '250px', '250px']}
-                >
-                    <LogoBlackIcon />
-                </Flex>
-                <Flex
-                    fontSize="14px"
-                    fontWeight="semibold"
-                    gridGap="10px"
-                >
-                    {
-                        genderPages.map(({ id, title, url } = e, i) => <NextLink
-                            href={url}
-                            passHref
-                            key={id}
-                        >
-                            <Link
+                    <CloseButton
+                        title="close menu"
+                        position="absolute"
+                        onClick={onClose}
+                        top="30px"
+                        left="30px"
+                        size="lg"
+                    />
+                    <LogoCenter
+                        w={['170px', '250px', '250px', '250px', '250px']}
+                        position="absolute"
+                        top={"26px"}
+                    />
+                    <Flex
+                        gridGap="10px"
+                        fontSize="14px"
+                        fontWeight="semibold"
+                        justifyContent="center"
+                    >
+                        {
+                            genderPages.map(({ id, title, url } = e, i) => <NextChakraLink
+                                pageUrl={url}
+                                key={id}
+                                onClick={onClose}
                                 textDecoration="none !important"
                                 _focus={{
                                     boxShadow: "none"
@@ -124,31 +99,39 @@ function MenuContent({ handleClick, left }) {
                                 pr="10px"
                             >
                                 {title}
-                            </Link>
-                        </NextLink>)
-                    }
-                </Flex>
-                <Grid
-                    templateColumns="repeat(2, minmax(0, 1fr))"
-                    gridAutoRows="max-content"
-                    textAlign="center"
-                    cursor="pointer"
-                    gap="20px"
-                >
-                    {
-                        menuSections.map(({ offer, title, id } = e) => <Text as="span"
-                            color={offer ? "red" : "black"}
-                            letterSpacing="-1px"
-                            fontWeight="semibold"
-                            fontSize="30px"
-                            key={id}
-                        >
-                            {title}
-                        </Text>)
-                    }
-                </Grid>
-            </Flex>
-        </Box>
+                            </NextChakraLink>
+                            )
+                        }
+                    </Flex>
+                    <Grid
+                        templateColumns={[
+                            'repeat(1, minmax(0, 1fr))',
+                            'repeat(1, minmax(0, 1fr))',
+                            'repeat(2, minmax(0, 1fr))',
+                            'repeat(2, minmax(0, 1fr))',
+                            'repeat(2, minmax(0, 1fr))',
+                        ]}
+                        gridAutoRows="max-content"
+                        textAlign="center"
+                        cursor="pointer"
+                        gap="20px"
+                    >
+                        {
+                            menuSections.map(({ offer, title, id } = e) => <Text as="span"
+                                color={offer ? "red" : "black"}
+                                letterSpacing="-1px"
+                                fontWeight="semibold"
+                                fontSize={['26px', '26px', '30px', '30px', '30px']}
+                                key={id}
+                            >
+                                {title}
+                            </Text>)
+                        }
+                    </Grid>
+                </DrawerBody>
+            </DrawerContent>
+        </Drawer>
+
     );
 }
 

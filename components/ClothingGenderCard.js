@@ -1,5 +1,5 @@
-import { Flex, Link } from '@chakra-ui/layout';
-import NextLink from "next/link"
+import { Flex } from '@chakra-ui/layout';
+import NextChakraLink from "@components/NextChakraLink";
 
 function ClothingGenderCard({ data }) {
 
@@ -14,25 +14,21 @@ function ClothingGenderCard({ data }) {
             bgSize="cover"
             bgPosition="top"
         >
-            <NextLink
-                href={url}
-                passHref
+            <NextChakraLink
+                pageUrl={url}
+                userSelect="none"
+                fontWeight="400"
+                letterSpacing="6px"
+                transform="rotate(90deg)"
+                textTransform="uppercase"
+                fontSize="64px"
+                _focus={{
+                    boxShadow: "none"
+                }}
+                textDecoration="none !important"
             >
-                <Link   
-                    userSelect="none"
-                    textDecoration="none !important"
-                    fontWeight="400"
-                    letterSpacing="6px"
-                    transform="rotate(90deg)"
-                    textTransform="uppercase"
-                    fontSize="64px"
-                    _focus={{
-                        boxShadow: "none"
-                    }}
-                >
-                    {gender}
-                </Link>
-            </NextLink>
+                {gender}
+            </NextChakraLink>
         </Flex>
     );
 }

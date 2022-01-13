@@ -4,7 +4,7 @@ import 'animate.css';
 
 function MyApp({ Component, pageProps }) {
 	return (
-		<ChakraProvider>
+		<ChakraProvider >
 			<Head>
 				<title>PULL&BEAR - Clone Website</title>
 				<link rel="icon" href="/pull&bear.ico" />
