@@ -1,10 +1,12 @@
 import { nanoid } from "nanoid";
-import Menu from "@components/Menu";
+import dynamic from "next/dynamic";
 import { Flex } from "@chakra-ui/layout";
 import man from '@images/pullandbear-man.webp';
 import woman from '@images/pullandbear-woman.webp';
-import ClothingGenderCard from "@components/ClothingGenderCard";
-import LogoCenter from "@components/LogoCenter";
+const Menu = dynamic(() => import('@components/Menu'))
+const LogoCenter = dynamic(() => import('@components/LogoCenter'))
+const ClothingGenderCard = dynamic(() => import('@components/ClothingGenderCard'))
+
 
 function En() {
 
@@ -33,7 +35,6 @@ function En() {
         >
             <Menu />
             <LogoCenter white={true} />
-            
             {
                 ClothingGenderInfo.map(e => <ClothingGenderCard key={e.id} data={e} />)
             }

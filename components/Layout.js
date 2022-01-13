@@ -1,7 +1,8 @@
-import Footer from "@components/Footer";
-import Menu from "@components/Menu";
-import SaleBackground from "@components/SaleBackground";
-import SearchBar from "@components/SearchBar";
+import dynamic from "next/dynamic";
+const Menu = dynamic(() => import('@components/Menu'))
+const Footer = dynamic(() => import('@components/Footer'))
+const SearchBar = dynamic(() => import('@components/SearchBar'))
+const SaleBackground = dynamic(() => import('@components/SaleBackground'))
 
 function Layout({ children }) {
     return (
