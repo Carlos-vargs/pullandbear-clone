@@ -31,7 +31,6 @@ export default function Home() {
 				pull & bear
 			</Heading>
 			<FormLocation />
-
 		</Flex>
 	);
 }

@@ -8,7 +8,7 @@ const LogoCenter = dynamic(() => import('@components/LogoCenter'))
 const ClothingGenderCard = dynamic(() => import('@components/ClothingGenderCard'))
 
 
-function En() {
+function English() {
 
     const ClothingGenderInfo = [
         {
@@ -42,4 +42,4 @@ function En() {
     );
 }
 
-export default En;
+export default English;
