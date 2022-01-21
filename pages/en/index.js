@@ -7,7 +7,6 @@ const Menu = dynamic(() => import('@components/Menu'))
 const LogoCenter = dynamic(() => import('@components/LogoCenter'))
 const ClothingGenderCard = dynamic(() => import('@components/ClothingGenderCard'))
 
-
 function English() {
 
     const ClothingGenderInfo = [
@@ -34,7 +33,7 @@ function English() {
             position="relative"
         >
             <Menu />
-            <LogoCenter white={true} />
+            <LogoCenter color="white" />
             {
                 ClothingGenderInfo.map(e => <ClothingGenderCard key={e.id} data={e} />)
             }

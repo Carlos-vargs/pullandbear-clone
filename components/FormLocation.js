@@ -23,10 +23,10 @@ function FormLocation() {
                 bgColor="white"
                 color="gray.700"
                 borderRadius="none"
-                defaultValue={"ca"}
+                defaultValue={"nic"}
                 textTransform="uppercase"
             >
-                <option key={nanoid()} value={"ca"}>canada</option>
+                <option key={nanoid()} value={"nic"}>nicaragua</option>
             </Select>
             <Select
                 size='lg'

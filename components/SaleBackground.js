@@ -1,7 +1,4 @@
 import { Flex, Heading, Stack, Text, Box } from '@chakra-ui/layout';
-import LogoCenter from '@components/LogoCenter';
-
-const videoUrl = "/videobg-pul&bear.mp4"
 
 function SaleBackground() {
 
@@ -10,14 +7,13 @@ function SaleBackground() {
             <Flex
                 objectFit={['cover', 'cover', 'cover', 'contain', 'contain']}
                 minH={['60vh', '60vh', '60vh', '90vh', '90vh']}
-                src={videoUrl}
+                src={"/videobg-pul&bear.mp4"}
                 loop={true}
                 zIndex={0}
                 as="video"
                 autoPlay
                 muted
             />
-            <LogoCenter white={true} />
             <Stack
                 letterSpacing={['-1px', '-1px', '-1px', '-2px', '-2px']}
                 transform="translate(-50%, -50%)"

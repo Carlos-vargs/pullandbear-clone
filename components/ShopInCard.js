@@ -1,28 +1,29 @@
 import { Flex, Heading } from "@chakra-ui/react";
 import NextChakraLink from "@components/NextChakraLink";
 
-function ShopInCard({ image, bgPosition = "top" }) {
+function ShopInCard({ config }) {
+
+    const { image, position, url } = config
+
     return (
         <Flex
             w="full"
             h="668px"
             pb="100px"
-            bgSize="cover"
             color="white"
+            bgSize="cover"
             gridGap="24px"
-            bgPosition={bgPosition}
             direction="column"
             position="relative"
-            bgRepeat="no-repeat"
             alignItems="center"
-            justifyContent="flex-end"
+            bgRepeat="no-repeat"
+            bgPosition={position}
             bgImg={`url(${image})`}
+            justifyContent="flex-end"
         >
-            <Heading textTransform="uppercase">
-                new in
-            </Heading>
+            <Heading textTransform="uppercase">new in</Heading>
             <NextChakraLink
-                pageUrl={"/#"}
+                pageUrl={url}
                 py="8px"
                 px="18px"
                 fontSize="12px"

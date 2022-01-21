@@ -1,11 +1,15 @@
 import MenuContent from "@components/MenuContent";
 import { useDisclosure } from "@chakra-ui/react";
+import { TopBarTheme } from "@components/Layout";
 import { Box } from "@chakra-ui/layout";
 import MenuIcon from "@icons/MenuIcon";
+import { useContext } from "react";
 
 function Menu() {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
+
+    const color = useContext(TopBarTheme);  
 
     return (
         <>
@@ -13,7 +17,7 @@ function Menu() {
                 top="30px"
                 zIndex={2}
                 left="30px"
-                color="white"
+                color={color}
                 position="fixed"
                 cursor="pointer"
                 onClick={onOpen}
