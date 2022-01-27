@@ -1,7 +1,7 @@
 import { Flex, Heading } from '@chakra-ui/react';
 import FormNewsletter from '@components/NewsletterForm';
 
-function FooterNewsletterContainer() {
+function NewsletterContainer() {
     return (
         <Flex
             py="83px"
@@ -17,4 +17,4 @@ function FooterNewsletterContainer() {
     );
 }
 
-export default FooterNewsletterContainer;
+export default NewsletterContainer;

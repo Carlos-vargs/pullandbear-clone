@@ -2,7 +2,7 @@ import { Flex } from "@chakra-ui/react";
 import TextAndDivider from "@components/TextAndDivider";
 import { nanoid } from "nanoid";
 
-function FooterCategoryContainer() {
+function CategoryContainer() {
 
     const clothes = [
         "trousers",
@@ -33,4 +33,4 @@ function FooterCategoryContainer() {
     );
 }
 
-export default FooterCategoryContainer;
+export default CategoryContainer;

@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/react";
-import FooterCategoryContainer from "@components/FooterCategoryContainer";
+import FooterCategoryContainer from "@components/CategoryContainer";
 import FooterInfoServicesContainer from "@components/FooterInfoServicesContainer";
 import FooterBusinessInfoContainer from "@components/FooterBusinessInfoContainer";
 

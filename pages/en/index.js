@@ -3,7 +3,6 @@ import dynamic from "next/dynamic";
 import { Flex } from "@chakra-ui/layout";
 import man from '@images/pullandbear-man.webp';
 import woman from '@images/pullandbear-woman.webp';
-const Menu = dynamic(() => import('@components/Menu'))
 const LogoCenter = dynamic(() => import('@components/LogoCenter'))
 const ClothingGenderCard = dynamic(() => import('@components/ClothingGenderCard'))
 
@@ -32,7 +31,6 @@ function English() {
             fontSize="60px"
             position="relative"
         >
-            <Menu />
             <LogoCenter color="white" />
             {
                 ClothingGenderInfo.map(e => <ClothingGenderCard key={e.id} data={e} />)

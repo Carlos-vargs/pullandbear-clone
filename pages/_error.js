@@ -1,6 +1,5 @@
 
 import { Flex } from "@chakra-ui/layout"
-
 function Error({ statusCode }) {
     return (
         <Flex>

@@ -1,6 +1,6 @@
 import MenuContent from "@components/MenuContent";
 import { useDisclosure } from "@chakra-ui/react";
-import { TopBarTheme } from "@components/Layout";
+import { TopBarTheme } from "@providers/Context";
 import { Box } from "@chakra-ui/layout";
 import MenuIcon from "@icons/MenuIcon";
 import { useContext } from "react";

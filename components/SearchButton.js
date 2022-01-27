@@ -1,4 +1,4 @@
-import { TopBarTheme } from "@components/Layout";
+import { TopBarTheme } from '@providers/Context';
 import { Button, Text } from '@chakra-ui/react';
 import SearchIcon from '@icons/SearchIcon';
 import { useContext } from "react";

@@ -1,44 +1,67 @@
-import { Box, Flex, Grid, Text } from "@chakra-ui/layout";
-import LogoCenter from '@components/LogoCenter';
-import { nanoid } from "nanoid";
-import NextChakraLink from "@components/NextChakraLink";
 import { CloseButton, Drawer, DrawerBody, DrawerContent, DrawerOverlay } from "@chakra-ui/react";
+import MenuItemColumns from "@components/MenuItemColumns";
+import NextChakraLink from "@components/NextChakraLink";
+import LogoCenter from '@components/LogoCenter';
+import { useEffect, useState } from "react";
+import { Flex } from "@chakra-ui/layout";
+import { nanoid } from "nanoid";
+import { useRouter } from 'next/router'
+
 
 function MenuContent({ onClose, isOpen }) {
+
+    const [categories, setCategories] = useState([])
+
+    const router = useRouter()
+    const { gender } = router.query
 
     const menuSections = [
         {
             id: nanoid(),
             title: "sale up to 50%",
             offer: true,
+            url: `/en/${gender}`,
         },
         {
             id: nanoid(),
             title: "new",
+            url: `/en/${gender}`,
+
         },
         {
             id: nanoid(),
-            title: "clothing"
+            title: "clothing",
+            accordion: true,
+            gender,
+            onClose,
+            array: categories,
         },
         {
             id: nanoid(),
-            title: "shoes"
+            title: "shoes",
+            onClose,
+            url: `/en/${gender}/shoes`,
         },
         {
             id: nanoid(),
             title: "join life",
+            url: `/en/${gender}`,
         },
         {
             id: nanoid(),
-            title: "pacific republic"
+            title: "pacific republic",
+            url: `/en/${gender}`,
         },
         {
             id: nanoid(),
-            title: "accessories"
+            title: "accessories",
+            url: `/en/${gender}`,
         },
         {
             id: nanoid(),
-            title: "bags"
+            title: "bags",
+            onClose,
+            url: `/en/${gender}/bag`,
         },
     ]
 
@@ -54,6 +77,29 @@ function MenuContent({ onClose, isOpen }) {
             title: "man"
         },
     ]
+
+    useEffect(() => {
+
+        async function getCategories() {
+            try {
+
+                gender === 'woman'
+                    ? gender = 'female'
+                    : gender = 'male'
+
+                const res = await fetch(`http://192.168.100.37:8000/api/products/categories?gender=${gender}`)
+                const { data } = await res.json()
+
+                setCategories(data)
+
+            } catch (error) {
+                console.error(error)
+            }
+        }
+
+        getCategories()
+
+    }, [gender]);
 
     return (
         <Drawer placement="left" onClose={onClose} isOpen={isOpen} size="xl"  >
@@ -83,51 +129,27 @@ function MenuContent({ onClose, isOpen }) {
                     <Flex
                         gridGap="10px"
                         fontSize="14px"
-                        fontWeight="semibold"
                         justifyContent="center"
                     >
                         {
                             genderPages.map(({ id, title, url } = e, i) => <NextChakraLink
-                                pageUrl={url}
                                 key={id}
+                                pr="10px"
+                                pageUrl={url}
                                 onClick={onClose}
-                                textDecoration="none !important"
                                 _focus={{
                                     boxShadow: "none"
                                 }}
+                                textDecoration="none !important"
                                 borderRight={i === 0 ? "1px solid" : "0px"}
-                                pr="10px"
+                                fontWeight={title === gender ? 'semibold' : 'normal'}
                             >
                                 {title}
                             </NextChakraLink>
                             )
                         }
                     </Flex>
-                    <Grid
-                        templateColumns={[
-                            'repeat(1, minmax(0, 1fr))',
-                            'repeat(1, minmax(0, 1fr))',
-                            'repeat(2, minmax(0, 1fr))',
-                            'repeat(2, minmax(0, 1fr))',
-                            'repeat(2, minmax(0, 1fr))',
-                        ]}
-                        gridAutoRows="max-content"
-                        textAlign="center"
-                        cursor="pointer"
-                        gap="20px"
-                    >
-                        {
-                            menuSections.map(({ offer, title, id } = e) => <Text as="span"
-                                color={offer ? "red" : "black"}
-                                letterSpacing="-1px"
-                                fontWeight="semibold"
-                                fontSize={['26px', '26px', '30px', '30px', '30px']}
-                                key={id}
-                            >
-                                {title}
-                            </Text>)
-                        }
-                    </Grid>
+                    <MenuItemColumns array={menuSections} />
                 </DrawerBody>
             </DrawerContent>
         </Drawer>

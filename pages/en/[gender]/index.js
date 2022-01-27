@@ -5,8 +5,8 @@ import man from "@images/pullandbear-manbg.webp";
 import woman from "@images/pullandbear-womanbg.webp";
 const ShopInCard = dynamic(() => import('@components/ShopInCard'))
 const SaleBackground = dynamic(() => import('@components/SaleBackground'))
-const FooterCategoryContainer = dynamic(() => import('@components/FooterCategoryContainer'));
-const FooterNewsletterContainer = dynamic(() => import('@components/FooterNewsletterContainer'));
+const CategoryContainer = dynamic(() => import('@components/CategoryContainer'));
+const NewsletterContainer = dynamic(() => import('@components/NewsletterContainer'));
 
 function Gender() {
 
@@ -35,10 +35,21 @@ function Gender() {
                     ? <ShopInCard config={config[0]} />
                     : <ShopInCard config={config[1]} />
             }
-            <FooterNewsletterContainer />
-            <FooterCategoryContainer />
+            <NewsletterContainer />
+            <CategoryContainer />
         </Layout>
     );
 }
+
+// export async function getServerSideProps() {
+
+//     const res = await fetch(`http://localhost:8000/api/products/categories`)
+//     const { data: categoryList } = await res.json()
+
+//     console.log(categoryList);
+
+//     return { props: { categoryList } }
+
+// }
 
 export default Gender;

@@ -7,7 +7,9 @@ function Products({ productList }) {
         <Layout>
             <Flex py="130px" justifyContent="center" alignItems="center" wrap="wrap" gridRowGap="40px" gridColumnGap="20px" >
                 {
-                    productList.map(e => <ProductCard key={e.id} data={e} />)
+                    productList.length !== 0
+                        ? productList.map(e => <ProductCard key={e.id} data={e} />)
+                        : <Flex py="100px" fontSize="20px" >Empty Category</Flex>
                 }
             </Flex>
         </Layout>
@@ -23,7 +25,7 @@ export async function getServerSideProps(context) {
         ? gender = 'female'
         : gender = 'male'
 
-    const res = await fetch(`http://localhost:8000/api/products?gender=${gender}&filter=${category}`)
+    const res = await fetch(`http://192.168.100.37:8000/api/products?gender=${gender}&filter=${category}`)
     const { data: productList } = await res.json()
 
     return { props: { productList } }

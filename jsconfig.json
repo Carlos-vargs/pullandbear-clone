@@ -15,6 +15,10 @@
             "@components/*": [
                 "components/*"
             ],
+            "@providers/*": [
+                "providers/*"
+            ],
+            
         }
     },
     "exclude": [

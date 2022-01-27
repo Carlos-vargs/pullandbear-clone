@@ -1,11 +1,9 @@
 import dynamic from "next/dynamic";
-import { createContext } from "react";
 import LogoCenter from "@components/LogoCenter";
+import { TopBarTheme } from "@providers/Context";
 const Menu = dynamic(() => import('@components/Menu'))
 const Footer = dynamic(() => import('@components/Footer'))
 const SearchBar = dynamic(() => import('@components/SearchBar'))
-
-export const TopBarTheme = createContext();
 
 function Layout({ children, theme = "black" }) {
 
