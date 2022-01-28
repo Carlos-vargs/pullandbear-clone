@@ -1,8 +1,13 @@
-import { Flex } from "@chakra-ui/react";
 import TextAndDivider from "@components/TextAndDivider";
+import NextChakraLink from "@components/NextChakraLink";
+import { Flex } from "@chakra-ui/react";
+import { useRouter } from "next/router";
 import { nanoid } from "nanoid";
 
 function CategoryContainer() {
+
+    const route = useRouter()
+    const { gender } = route.query
 
     const clothes = [
         "trousers",
@@ -27,7 +32,11 @@ function CategoryContainer() {
                     fsize={['10px', '10px', '14px', '14px', '14px']}
                     lastItem={clothes.length - 1}
                     index={i}
-                >{e}</TextAndDivider>)
+                >
+                    <NextChakraLink _focus={{ boxShadow: "none" }} pageUrl={`/en/${gender}/${e}`} >
+                        {e}
+                    </NextChakraLink>
+                </TextAndDivider>)
             }
         </Flex>
     );

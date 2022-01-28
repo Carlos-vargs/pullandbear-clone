@@ -41,15 +41,4 @@ function Gender() {
     );
 }
 
-// export async function getServerSideProps() {
-
-//     const res = await fetch(`http://localhost:8000/api/products/categories`)
-//     const { data: categoryList } = await res.json()
-
-//     console.log(categoryList);
-
-//     return { props: { categoryList } }
-
-// }
-
 export default Gender;

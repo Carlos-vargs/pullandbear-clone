@@ -56,7 +56,7 @@ function MenuContent({ onClose, isOpen }) {
 
     categories.map(e => {
         if (e.name.includes('shoes')) {
-            menuSections.splice(2, 0, {
+            menuSections.push({
                 id: nanoid(),
                 title: "shoes",
                 onClose,

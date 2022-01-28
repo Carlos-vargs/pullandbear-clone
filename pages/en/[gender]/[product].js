@@ -18,8 +18,9 @@ function Products({ productList }) {
 
 export async function getServerSideProps(context) {
 
-    let gender = context.query.gender
-    let category = context.query.product
+    const query = context.query
+
+    let { gender, product: category } = query
 
     gender === 'woman'
         ? gender = 'female'
