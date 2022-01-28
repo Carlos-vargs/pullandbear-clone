@@ -5,9 +5,16 @@ import { nanoid } from "nanoid";
 
 function MenuItemColumns({ array = [] }) {
 
-    const index = array.length;
-    const firstColumn = array.slice(0, index / 2);
-    const secondColumn = array.slice(index / 2, index);
+    const index = array.length
+
+    let divider = 1.5
+
+    if (index === 8) {
+        divider = 2
+    }
+
+    const firstColumn = array.slice(0, index / divider)
+    const secondColumn = array.slice(index / divider, index)
 
     const columns = [firstColumn, secondColumn]
 

@@ -4,12 +4,13 @@ import NextChakraLink from "@components/NextChakraLink";
 import LogoCenter from '@components/LogoCenter';
 import { useEffect, useState } from "react";
 import { Flex } from "@chakra-ui/layout";
-import { nanoid } from "nanoid";
 import { useRouter } from 'next/router'
+import { nanoid } from "nanoid";
 
 
 function MenuContent({ onClose, isOpen }) {
 
+    const [clothingCategories, setclothingCategories] = useState([])
     const [categories, setCategories] = useState([])
 
     const router = useRouter()
@@ -26,7 +27,6 @@ function MenuContent({ onClose, isOpen }) {
             id: nanoid(),
             title: "new",
             url: `/en/${gender}`,
-
         },
         {
             id: nanoid(),
@@ -34,13 +34,7 @@ function MenuContent({ onClose, isOpen }) {
             accordion: true,
             gender,
             onClose,
-            array: categories,
-        },
-        {
-            id: nanoid(),
-            title: "shoes",
-            onClose,
-            url: `/en/${gender}/shoes`,
+            array: clothingCategories,
         },
         {
             id: nanoid(),
@@ -57,13 +51,29 @@ function MenuContent({ onClose, isOpen }) {
             title: "accessories",
             url: `/en/${gender}`,
         },
-        {
-            id: nanoid(),
-            title: "bags",
-            onClose,
-            url: `/en/${gender}/bag`,
-        },
+
     ]
+
+    categories.map(e => {
+        if (e.name.includes('shoes')) {
+            menuSections.splice(2, 0, {
+                id: nanoid(),
+                title: "shoes",
+                onClose,
+                url: `/en/${gender}/shoes`,
+            });
+        }
+
+        if (e.name.includes('bag')) {
+            menuSections.push({
+                id: nanoid(),
+                title: "bags",
+                onClose,
+                url: `/en/${gender}/bag`,
+            })
+        }
+
+    })
 
     const genderPages = [
         {
@@ -80,24 +90,30 @@ function MenuContent({ onClose, isOpen }) {
 
     useEffect(() => {
 
-        async function getCategories() {
+        async function getClothingCategories(filter, gender) {
+
             try {
 
                 gender === 'woman'
                     ? gender = 'female'
                     : gender = 'male'
 
-                const res = await fetch(`http://192.168.100.37:8000/api/products/categories?gender=${gender}`)
+                const res = await fetch(`http://192.168.100.37:8000/api/products/categories?gender=${gender}&filter=${filter}`)
                 const { data } = await res.json()
 
-                setCategories(data)
+                if (filter === 'clothing') {
+                    setclothingCategories(data)
+                } else {
+                    setCategories(data)
+                }
 
             } catch (error) {
                 console.error(error)
             }
         }
 
-        getCategories()
+        getClothingCategories('all', gender)
+        getClothingCategories('clothing', gender)
 
     }, [gender]);
 
