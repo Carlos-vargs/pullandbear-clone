@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Flex } from "@chakra-ui/layout";
 import { useRouter } from 'next/router'
 import { nanoid } from "nanoid";
+import axios from "axios";
 
 
 function MenuContent({ onClose, isOpen }) {
@@ -64,12 +65,12 @@ function MenuContent({ onClose, isOpen }) {
             });
         }
 
-        if (e.name.includes('bag')) {
+        if (e.name.includes('bags')) {
             menuSections.push({
                 id: nanoid(),
                 title: "bags",
                 onClose,
-                url: `/en/${gender}/bag`,
+                url: `/en/${gender}/bags`,
             })
         }
 
@@ -98,13 +99,12 @@ function MenuContent({ onClose, isOpen }) {
                     ? gender = 'female'
                     : gender = 'male'
 
-                const res = await fetch(`http://192.168.100.37:8000/api/products/categories?gender=${gender}&filter=${filter}`)
-                const { data } = await res.json()
+                const { data: { data: filteredCategories } } = await axios.get(`http://192.168.100.37:8000/api/products/categories?gender=${gender}&filter=${filter}`)
 
                 if (filter === 'clothing') {
-                    setclothingCategories(data)
+                    setclothingCategories(filteredCategories)
                 } else {
-                    setCategories(data)
+                    setCategories(filteredCategories)
                 }
 
             } catch (error) {

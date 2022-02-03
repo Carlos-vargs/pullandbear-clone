@@ -1,5 +1,7 @@
 import { Flex, Heading } from "@chakra-ui/layout";
 import FormLocation from "@components/FormLocation";
+import NextChakraLink from "@components/NextChakraLink";
+import AdminIcon from "@icons/AdminIcon";
 import bgImage from '@images/pullandbear-background.webp';
 
 export default function Home() {
@@ -17,6 +19,18 @@ export default function Home() {
 			bgImg={`url(${bgImage.src})`}
 			pt={['150px', '150px', '150px', '150px', '180px']}
 		>
+			<NextChakraLink
+				_focus={{ boxShadow: "none" }}
+				w="30px"
+				position="absolute"
+				right="20px"
+				title="admin panel"
+				color="white"
+				top="20px"
+				pageUrl={`/admin/create-products`}
+			>
+				<AdminIcon />
+			</NextChakraLink>
 			<Heading
 				color="white"
 				lineHeight="1"
