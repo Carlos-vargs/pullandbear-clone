@@ -8,8 +8,8 @@ import axios from 'axios';
 
 function createProducts() {
 
-    const productsUrl = "http://192.168.100.37:8000/api/products"
-    const categoryUrl = "http://192.168.100.37:8000/api/products/categories"
+    const productsUrl = "https://pullandbear-clone-api.herokuapp.com/api/products"
+    const categoryUrl = "https://pullandbear-clone-api.herokuapp.com/api/products/categories"
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 

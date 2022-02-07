@@ -99,7 +99,7 @@ function MenuContent({ onClose, isOpen }) {
                     ? gender = 'female'
                     : gender = 'male'
 
-                const { data: { data: filteredCategories } } = await axios.get(`http://192.168.100.37:8000/api/products/categories?gender=${gender}&filter=${filter}`)
+                const { data: { data: filteredCategories } } = await axios.get(`https://pullandbear-clone-api.herokuapp.com/api/products/categories?gender=${gender}&filter=${filter}`)
 
                 if (filter === 'clothing') {
                     setclothingCategories(filteredCategories)
