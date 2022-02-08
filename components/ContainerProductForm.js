@@ -6,8 +6,9 @@ import axios from 'axios';
 
 function ContainerProductForm() {
 
-    const productsUrl = "https://pullandbear-clone-api.herokuapp.com/api/products"
-    const categoryUrl = "https://pullandbear-clone-api.herokuapp.com/api/products/categories"
+    const productsUrl = `${process.env.API_URL}/products`
+
+    const categoryUrl = `${process.env.API_URL}/products/categories`
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -123,19 +124,22 @@ function ContainerProductForm() {
     }
 
     useEffect(() => {
-        getCategories()
-    }, [])
 
-    const getCategories = async () => {
-        try {
-            const { data: { data: categories } } = await axios.get(categoryUrl)
-
-            setCategoryList(categories)
-
-        } catch (error) {
-            console.error(error)
+        const getCategories = async () => {
+            try {
+                const { data: { data: categories } } = await axios.get(categoryUrl)
+    
+                setCategoryList(categories)
+    
+            } catch (error) {
+                console.error(error)
+            }
         }
-    }
+
+        getCategories()
+        
+    }, [categoryUrl])
+
 
 
     return (
