@@ -20,3 +20,8 @@ a {
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 }
+
+.chakra-checkbox__label-resize span{
+  margin: 0px;
+  font-size: 12px;
+}

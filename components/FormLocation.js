@@ -40,27 +40,29 @@ function FormLocation() {
             >
                 <option key={nanoid()} value={"en"}>english</option>
             </Select>
-            <Flex
+
+            <Checkbox
                 h="3rem"
                 w="full"
+                size="lg"
                 px="14px"
                 maxW="254px"
                 bgColor="white"
-                cursor="default"
                 alignItems="center"
                 textTransform="uppercase"
+                fontSize="12px"
+                className="chakra-checkbox__label-resize"
+                flexDirection="row-reverse"
                 justifyContent="space-between"
             >
                 remember my selection
-                <Checkbox
-                    size="lg"
-                />
-            </Flex>
+            </Checkbox>
             <NextChakraLink
                 pageUrl={"/en"}
                 size="lg"
                 px="50px"
                 bgColor="black"
+                title="gender page"
                 color="white"
                 borderRadius="none"
                 _hover={{
