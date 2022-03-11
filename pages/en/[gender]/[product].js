@@ -26,7 +26,7 @@ export async function getServerSideProps(context) {
         ? gender = 'female'
         : gender = 'male'
 
-    const res = await fetch(`${process.env.API_URL}/products?gender=${gender}&filter=${category}`)
+    const res = await fetch(`${process.env.API_URL}/products?gender=${gender}&category=${category}`)
     const { data: productList } = await res.json()
 
     return { props: { productList } }

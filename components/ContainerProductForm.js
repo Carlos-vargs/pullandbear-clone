@@ -1,4 +1,4 @@
-import { useDisclosure, } from "@chakra-ui/react";
+import { useDisclosure } from "@chakra-ui/react";
 import CategoryForm from "@components/CategoryForm";
 import ProductForm from "@components/ProductForm";
 import { useState, useEffect } from "react";
@@ -8,7 +8,7 @@ function ContainerProductForm() {
 
     const productsUrl = `${process.env.API_URL}/products`
 
-    const categoryUrl = `${process.env.API_URL}/products/categories`
+    const categoryUrl = `${process.env.API_URL}/categories`
 
     const { isOpen, onOpen, onClose } = useDisclosure()
 

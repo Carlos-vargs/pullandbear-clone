@@ -91,7 +91,7 @@ function MenuContent({ onClose, isOpen }) {
 
     useEffect(() => {
 
-        async function getClothingCategories(filter, gender) {
+        async function getClothingCategories(category, gender) {
 
             try {
 
@@ -99,9 +99,9 @@ function MenuContent({ onClose, isOpen }) {
                     ? gender = 'female'
                     : gender = 'male'
 
-                const { data: { data: filteredCategories } } = await axios.get(`${process.env.API_URL}/products/categories?gender=${gender}&filter=${filter}`)
+                const { data: { data: filteredCategories } } = await axios.get(`${process.env.API_URL}/categories?gender=${gender}&category=${category}`)
 
-                if (filter === 'clothing') {
+                if (category === 'clothing') {
                     setclothingCategories(filteredCategories)
                 } else {
                     setCategories(filteredCategories)
